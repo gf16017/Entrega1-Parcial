@@ -1,10 +1,11 @@
-FROM maven:3.9.6-eclipse-temurin-17
+FROM eclipse-temurin:17-jdk-alpine
 
 WORKDIR /app
 
 COPY . .
 
-RUN mvn clean package -DskipTests
+RUN apk add --no-cache maven && \
+    mvn clean package -DskipTests
 
 EXPOSE 8080
 
