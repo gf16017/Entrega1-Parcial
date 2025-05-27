@@ -1,0 +1,17 @@
+services:
+  - type: web
+    name: login-app
+    env: docker
+    dockerfilePath: ./Dockerfile
+    plan: free
+    healthCheckPath: /
+    autoDeploy: true
+    envVars:
+      - key: REACT_APP_AUTH0_DOMAIN
+        sync: false
+      - key: REACT_APP_AUTH0_CLIENT_ID
+        sync: false
+      - key: REACT_APP_AUTH0_AUDIENCE
+        sync: false
+      - key: REACT_APP_API_BASE_URL
+        sync: false 
