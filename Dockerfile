@@ -1,13 +1,11 @@
-FROM node:18-alpine
+FROM maven:3.9.6-eclipse-temurin-17
 
 WORKDIR /app
 
-COPY package*.json ./
-
-RUN npm install
-
 COPY . .
 
-EXPOSE 3000
+RUN mvn clean package -DskipTests
 
-CMD ["npm", "start"]
+EXPOSE 8080
+
+CMD ["java", "-jar", "target/*.jar"]

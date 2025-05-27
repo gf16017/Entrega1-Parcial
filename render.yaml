@@ -4,14 +4,17 @@ services:
     env: docker
     dockerfilePath: ./Dockerfile
     plan: free
-    healthCheckPath: /
-    autoDeploy: true
+    healthCheckPath: /actuator/health
     envVars:
-      - key: REACT_APP_AUTH0_DOMAIN
-        sync: false
-      - key: REACT_APP_AUTH0_CLIENT_ID
-        sync: false
-      - key: REACT_APP_AUTH0_AUDIENCE
-        sync: false
-      - key: REACT_APP_API_BASE_URL
-        sync: false 
+      - key: SPRING_PROFILES_ACTIVE
+        value: prod
+      - key: AUTH0_DOMAIN
+        value: dev-w4kmffqu86f3iz7k.us.auth0.com
+      - key: AUTH0_CLIENT_ID
+        value: UNICXAl1jF8qeyOj4sDWbBB2PoGhdOSy
+      - key: AUTH0_AUDIENCE
+        value: https://dev-w4kmffqu86f3iz7k.us.auth0.com/api/v2/
+      - key: AUTH0_ISSUER
+        value: https://dev-w4kmffqu86f3iz7k.us.auth0.com/
+      - key: AUTH0_CALLBACK_URL
+        value: https://login-app.onrender.com/callback 
